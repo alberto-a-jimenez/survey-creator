@@ -1,5 +1,5 @@
 <template>
-  <div class="svc-tabbed-menu" ref="container">
+  <div class="svc-tabbed-menu" role="tablist" ref="container" aria-label="Creator tabbed menu">
     <template v-for="action in model.renderedActions" :key="action.id">
       <SvComponent
         :is="'svc-tabbed-menu-item-wrapper'"

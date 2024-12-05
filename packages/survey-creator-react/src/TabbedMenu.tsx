@@ -37,7 +37,7 @@ export class TabbedMenuComponent extends SurveyElementBase<
   renderElement(): JSX.Element {
     const items = this.model.renderedActions.map((item) => <TabbedMenuItemWrapper item={item} key={item.id} />);
     return (
-      <div ref={this.rootRef} className="svc-tabbed-menu">
+      <div ref={this.rootRef} className="svc-tabbed-menu" role="tablist" aria-label="Creator tabbed menu">
         {items}
       </div>
     );
@@ -85,7 +85,14 @@ class TabbedMenuItemWrapper extends SurveyElementBase<
     );
 
     return (
-      <span key={this.item.id} className={css}>
+      <span
+        key={this.item.id}
+        id={`tab-${this.item.id}`}
+        className={css}
+        role="tab"
+        aria-selected={this.item.active}
+        aria-controls={`scrollableDiv-${this.item.id}`}
+      >
         <div className="sv-action__content">
           {component}
         </div>
@@ -112,7 +119,7 @@ export class TabbedMenuItemComponent extends SurveyElementBase<
     const item = this.item;
     return (attachKey2click(
       <div className={item.getRootCss()} onClick={() => item.action(item)}>
-        {item.hasTitle ? <span className={item.getTitleCss()}>{item.title}</span> : null}
+        {item.hasTitle ? <span className={item.getTitleCss()} >{item.title}</span> : null}
         {item.hasIcon ? <SvgIcon iconName={item.iconName} className={item.getIconCss()} size={"auto"} title={item.tooltip || item.title}></SvgIcon> : null}
       </div>
     )

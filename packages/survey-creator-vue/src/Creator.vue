@@ -50,12 +50,14 @@
                   <div
                     class="svc-creator-tab"
                     v-bind:key="tab.id"
+                    role="tabpanel"
                     v-if="model.viewType == tab.id && tab.visible"
                     :id="'scrollableDiv-' + tab.id"
                     :class="{
                       'svc-creator__toolbox--right':
                         model.toolboxLocation == 'right',
                     }"
+                    :aria-labelledby="`tab-${tab.id}`"
                   >
                     <SvComponent
                       :is="tab.componentContent"

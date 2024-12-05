@@ -63,6 +63,7 @@ const buildPlatformJson = {
 };
 
 module.exports = function (options) {
+  
   const buildPath = __dirname + "/build/";
   const isProductionBuild = options.buildType === "prod";
 
@@ -88,6 +89,10 @@ module.exports = function (options) {
 
   const config = {
     mode: isProductionBuild ? "production" : "development",
+    watchOptions: {
+      ignored: /node_modules/, // Ignore node_modules and other unnecessary files
+      poll: 1000, // Use polling instead of native fs watchers
+    },
     entry: {
       [packageJson.name]: path.resolve(__dirname, "./src/entries/index.ts")
     },
