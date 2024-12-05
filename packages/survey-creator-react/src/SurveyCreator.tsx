@@ -151,11 +151,9 @@ export class SurveyCreatorComponent extends SurveyElementBase<
       });
     const className = "svc-creator-tab" + (creator.toolboxLocation == "right" ? " svc-creator__toolbox--right" : "");
     return (
-      <div
-        key={tab.id}
-        id={"scrollableDiv-" + tab.id}
-        className={className}
-      >
+      <div key={tab.id} id={`scrollableDiv-${tab.id}`} className={className}
+        role="tabpanel"
+        aria-labelledby={`tab-${tab.id}`}>
         {component}
       </div>
     );

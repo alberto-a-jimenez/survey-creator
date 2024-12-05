@@ -1,5 +1,9 @@
 <template>
   <span
+    :id="`tab-${item.id}`"
+    role="tab"
+    :aria-selected="item.active"
+    :aria-controls="`scrollableDiv-${item.id}`"
     class="svc-tabbed-menu-item-container"
     :class="[!item.isVisible ? 'sv-action--hidden' : '', item.css]"
   >
